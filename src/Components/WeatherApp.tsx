@@ -40,10 +40,9 @@ const WeatherApp: React.FC = () => {
     Geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
-        // console.log("K_______ latitude ", latitude );
-        // console.log("K_______ longitude ", longitude );
-        
-        fetchWeather(28.4089, 77.3178);
+        console.log("K_______ latitude ", latitude );
+        console.log("K_______ longitude ", longitude );        
+        fetchWeather(latitude, longitude);
       },
       error => {
         console.error(error);
