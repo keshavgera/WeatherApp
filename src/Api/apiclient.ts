@@ -1,5 +1,6 @@
 import { configure } from "@testing-library/react-native";
 import axios, {AxiosRequestConfig, AxiosResponse, AxiosError} from "axios";
+import { useNavigation } from '@react-navigation/native';
 
 // create an axios instanse
 const apiclient = axios.create({
@@ -27,6 +28,14 @@ apiclient.interceptors.response.use((response: AxiosResponse): AxiosResponse =>{
     },
     (error:AxiosError) : Promise<AxiosError> =>{
         console.log("K_____  Axios interceptors response error ", error);
+
+        if (error.response?.status === 401) {
+            console.log('K_____ Unauthorized, redirecting to login...');
+      
+            const navigation = useNavigation();
+            // navigation.navigate('LoginScreen');    
+          }
+
         return Promise.reject(error);
     }
 )
