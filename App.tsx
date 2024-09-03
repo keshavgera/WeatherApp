@@ -4,6 +4,7 @@ import WeatherApp from './src/Components/WeatherApp'
 import WeeklyWeatherComponent from './src/Components/WeeklyWeatherComponent'
 import WeatherAppSearch from './src/Components/WeatherAppSearch'
 import TodoList from './src/Screens/TodoList'
+import TodoListCRUD from './src/Screens/TodoListCRUD'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <WeeklyWeatherComponent />
 
       {/* <TodoList /> */}
+      <TodoListCRUD />
     </SafeAreaView>
   )
 }
