@@ -1,15 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import WeatherApp from './src/Components/WeatherApp'
-import SearchComponent from './src/Components/SearchComponent'
+import WeeklyWeatherComponent from './src/Components/WeeklyWeatherComponent'
+import WeatherAppSearch from './src/Components/WeatherAppSearch'
 
 const App = () => {
   return (
-    <View style={{flex:1}}>
-      <Text>App</Text>
-      <SearchComponent />
+    <SafeAreaView style={{flex:1}}>
+      
+      <WeatherAppSearch />      
       <WeatherApp />
-    </View>
+      <WeeklyWeatherComponent />
+    </SafeAreaView>
   )
 }
 

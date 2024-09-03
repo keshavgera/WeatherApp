@@ -16,7 +16,12 @@ const WeeklyWeatherComponent: React.FC = () => {
     const loadWeather = async () => {
       try {
         const { latitude, longitude } = await getCurrentLocation();
+
+        console.log("K_______ WeeklyWeatherComponent lat ", latitude );
+    console.log("K_______ WeeklyWeatherComponent lon ", longitude );
+
         const data = await fetchWeeklyWeatherData(latitude, longitude);
+        console.log("K_______ WeeklyWeatherComponent data  ", data  );
 
         const forecasts = data.daily.map(day => {
           const date = new Date(day.dt * 1000);

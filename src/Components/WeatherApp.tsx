@@ -4,7 +4,7 @@ import Geolocation from 'react-native-geolocation-service';
 import axios from 'axios';
 import { check, request, PERMISSIONS, RESULTS } from 'react-native-permissions';
 
-const API_KEY = 'f6cafaaca4769a26d1780f8f52bd6887';
+import { API_KEY } from '../helpers/config';
 
 const WeatherApp: React.FC = () => {
   const [location, setLocation] = useState<string>('');
@@ -40,12 +40,10 @@ const WeatherApp: React.FC = () => {
     Geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords;
-
-
-        console.log("K_______ latitude ", latitude );
-        console.log("K_______ longitude ", longitude );
+        // console.log("K_______ latitude ", latitude );
+        // console.log("K_______ longitude ", longitude );
         
-        fetchWeather(latitude, longitude);
+        fetchWeather(28.4089, 77.3178);
       },
       error => {
         console.error(error);
@@ -57,17 +55,14 @@ const WeatherApp: React.FC = () => {
 
   const fetchWeather = async (latitude: number, longitude: number) => {
     try {
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`
-      );
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
+      console.log("K_______ apiUrl ", apiUrl );
+
+      const response = await axios.get(apiUrl);
       const { name } = response.data;
       const { temp } = response.data.main;
       const { icon } = response.data.weather[0];
-
-      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${API_KEY}`;
-
-      console.log("K_______ apiUrl ", apiUrl );
-
+      
       console.log("K_______ name ", name );
       console.log("K_______ temp ", temp  );
       console.log("K_______ icon ", icon  );

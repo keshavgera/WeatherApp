@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Platform } from 'react-native';
 // import Geolocation from '@react-native-community/geolocation';
 import Geolocation from 'react-native-geolocation-service';
+import { API_KEY } from '../helpers/config';
 
-const API_KEY = 'f6cafaaca4769a26d1780f8f52bd6887';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/onecall';
 const GEO_BASE_URL = 'https://api.openweathermap.org/geo/1.0/direct';
 const WEATHER_BASE_URL = 'https://api.openweathermap.org/data/2.5/onecall';
@@ -27,7 +27,14 @@ interface WeatherData {
 }
 
 export const fetchWeeklyWeatherData = (latitude: number, longitude: number): Promise<WeatherData> => {
-  return axios.get(`${BASE_URL}?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${API_KEY}`)
+  const url2 = `${BASE_URL}?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${API_KEY}`;
+
+  // const url = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=f6cafaaca4769a26d1780f8f52bd6887`
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=f6cafaaca4769a26d1780f8f52bd6887`
+  console.log("K_____ fetchWeeklyWeatherData url ", url);
+  
+  // return axios.get(`${BASE_URL}?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&units=metric&appid=${API_KEY}`)
+  return axios.get(url)
     .then(response => response.data);
 };
 
