@@ -3,7 +3,6 @@ import React from 'react'
 import WeatherApp from './src/Components/WeatherApp'
 import WeeklyWeatherComponent from './src/Components/WeeklyWeatherComponent'
 import WeatherAppSearch from './src/Components/WeatherAppSearch'
-import TodoList from './src/Screens/TodoList'
 
 const App = () => {
   return (
@@ -13,7 +12,6 @@ const App = () => {
       <WeatherApp />
       <WeeklyWeatherComponent />
 
-      {/* <TodoList /> */}
     </SafeAreaView>
   )
 }
