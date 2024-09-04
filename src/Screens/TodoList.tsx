@@ -1,5 +1,5 @@
-import { FlatList, StyleSheet, Text, ActivityIndicator, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, StyleSheet, Text, View } from 'react-native';
 import apiclient from '../Api/apiclient';
 
 type Posts ={
@@ -9,11 +9,10 @@ type Posts ={
     body : string;
 }
 
-const TodoList = () => {
- 
+const TodoList: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
+
     const [data, setdata] = useState<Posts[]>([])
     const [loading, setLoading] = useState<boolean>(true)
-
    
 
     useEffect(() => {
@@ -52,6 +51,7 @@ const TodoList = () => {
         renderItem={onRenderItem}
         keyExtractor={(item) => item.id.toString() }
       />
+     
     </View>
   )
 }

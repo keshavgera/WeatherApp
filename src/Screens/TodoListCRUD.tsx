@@ -10,7 +10,7 @@ interface Todo {
 
 const TodoListCRUD = () => {
  
-  const [todos, setTodos] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>([{id:1, text:"Ram Ram ji",completed:false},{id:2, text:"SitaRam ji",completed:false}]);
   const [inputText, setInputText] = useState<string>('');
 
   const addTodo = () => {
