@@ -72,10 +72,73 @@ const Login: React.FC<{ route: any; navigation: any }> = ({ route, navigation })
 
     return (
         <View style={styles.container}>
+            <Text>Name:</Text>
+            <TextInput
+                style={styles.input}
+                value={name}
+                onChangeText={(text) => {
+                    setName(text);
+                    validateName(text);
+                }}
+            />
+            {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
 
+            <Text>Email:</Text>
+            <TextInput
+                style={styles.input}
+                value={email}
+                keyboardType="email-address"
+                onChangeText={(text) => {
+                    setEmail(text);
+                    validateEmail(text);
+                }}
+            />
+            {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
 
-            <Button title="fetch api "
+            <Text>Password:</Text>
+            <TextInput
+                style={styles.input}
+                value={password}
+                secureTextEntry
+                onChangeText={(text) => {
+                    setPassword(text);
+                    validatePassword(text);
+                }}
+            />
+            {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
+
+            <Button title="Login" onPress={handleSubmit} />
+
+            <View style={{ marginVertical: 20 }}>
+
+                <Button title="Fetch API"
+                    onPress={() => navigation.navigate('Todo')} />
+            </View>
+
+            <View style={{ marginVertical: 20 }}>
+                <Button title="Todo Crud"
+                    onPress={() => navigation.navigate('CRUD')} />
+            </View>
+           
+            <View style={{ marginVertical: 20 }}>
+                <Button title="Custom Modal"
+                    onPress={() =>{setModalVisible(true)}} />
+            </View>
+
+            <Button title="WeatherApp"
                 onPress={() => navigation.navigate('WeatherApp')} />
+
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                <Button title="Show Modal" onPress={() => setModalVisible(true)} />
+                <CustomModal
+                    visible={isModalVisible}
+                    title="Confirmation"
+                    onCancel={handleCancel}
+                    onConfirm={handleConfirm}
+                >
+                    <Text>Are you sure you want to proceed?</Text>
+                </CustomModal>
+            </View>
 
         </View>
     );
